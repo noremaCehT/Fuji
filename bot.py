@@ -46,10 +46,14 @@ async def info(ctx, user: discord.Member):
     embed.set_thumbnail(url=user.avatar_url)
     await bot.say(embed=embed)
 
-@bot.command(pass_context=True) # Kick a server member (in progress)
+@bot.command(pass_context=True) # Kick a server member
 async def kick(ctx, user: discord.Member):
-    await bot.say("{} has been kicked.".format(user.name))
-    await bot.kick(user)
+        if ctx.message.author.server_permissions.kick_members:
+            await bot.kick(user)
+            await bot.say("{} has been kicked.".format(user.name))
+
+        elif ctx.message.author.server_permissions.kick_members == False:
+            await bot.say("You don't have the permissions to do that!")
 
 @bot.command(pass_context=True) # Flip a coin
 async def coin(ctx):
@@ -73,6 +77,6 @@ async def purge(ctx, amount = 100): # Purge a user-specified amount of messages
   
 @bot.command(pass_context=True)
 async def fhelp(ctx): # Basic help command
-    await bot.say("**Thank you for adding Fuji!**\nCurrently, Fuji has four commands:\n`#ball (question)`, which simulates a Magic 8-Ball,\n`#meme`, which fetches a random meme from r/memes\n`#info (username)`, which gives you information about a server member\n`#kick (username)`, which kicks a server member\n`coin`, which flips a coin")
+    await bot.say("**Thank you for adding Fuji!**\nCurrently, Fuji has Five commands:\n`#ball (question)`, which simulates a Magic 8-Ball,\n`#meme`, which fetches a random meme from r/memes\n`#info (username)`, which gives you information about a server member\n`#kick (username)`, which kicks a server member\n`coin`, which flips a coin\n`#kick` (username) which kicks a user from the server.\n`#purge (number of messages)`, which removes the specified amount of previous chats")
 
 bot.run("TOKEN")
