@@ -77,6 +77,6 @@ async def purge(ctx, amount = 100): # Purge a user-specified amount of messages
   
 @bot.command(pass_context=True)
 async def fhelp(ctx): # Basic help command
-    await bot.say("**Thank you for adding Fuji!**\nCurrently, Fuji has Five commands:\n`#ball (question)`, which simulates a Magic 8-Ball,\n`#meme`, which fetches a random meme from r/memes\n`#info (username)`, which gives you information about a server member\n`#kick (username)`, which kicks a server member\n`coin`, which flips a coin\n`#kick` (username) which kicks a user from the server.\n`#purge (number of messages)`, which removes the specified amount of previous chats")
+    await bot.say("**Thank you for adding Fuji!**\nCurrently, Fuji has Five commands:\n`#ball (question)`, which simulates a Magic 8-Ball,\n`#meme`, which fetches a random meme from r/dankmemes\n`#info (username)`, which gives you information about a server member\n`#kick (username)`, which kicks a server member\n`coin`, which flips a coin\n`#kick` (username) which kicks a user from the server.\n`#purge (number of messages)`, which removes the specified amount of previous chats")
 
 bot.run("TOKEN")
