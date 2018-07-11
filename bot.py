@@ -62,6 +62,16 @@ async def coin(ctx):
         await bot.say("Tails")
 
 @bot.command(pass_context=True)
+async def purge(ctx, amount = 100): # Purge a user-specified amount of messages
+    channel = ctx.message.channel
+    messages = []
+    async for message in bot.logs_from(channel, limit = int(amount) + 1):
+        messages.append(message)
+
+    await bot.delete_messages(messages)
+    await bot.say("{} Messages purged.".format(amount))        
+  
+@bot.command(pass_context=True)
 async def fhelp(ctx): # Basic help command
     await bot.say("**Thank you for adding Fuji!**\nCurrently, Fuji has four commands:\n`#ball (question)`, which simulates a Magic 8-Ball,\n`#meme`, which fetches a random meme from r/memes\n`#info (username)`, which gives you information about a server member\n`#kick (username)`, which kicks a server member\n`coin`, which flips a coin")
 
