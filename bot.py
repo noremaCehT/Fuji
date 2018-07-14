@@ -56,14 +56,12 @@ async def kick(ctx, user: discord.Member):
             await bot.say("You don't have the permissions to do that!")
 
 @bot.command(pass_context=True) # Flip a coin
-async def coin(ctx):
-    face = random.randrange(1)
-
-    if (face == 0):
-        await bot.say("Heads")
-
-    if (face == 1):
-        await bot.say("Tails")
+async def cointoss(ctx):
+    flip = random.randint(0 ,1)
+    if (flip == 0):
+        await bot.say("Heads!")
+    else: 
+        await bot.say("Tails!")
 
 @bot.command(pass_context=True)
 async def purge(ctx, amount = 100): # Purge a user-specified amount of messages
